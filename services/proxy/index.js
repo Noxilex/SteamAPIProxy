@@ -13,7 +13,6 @@ module.exports = function (fastify, opts, next) {
       reply.status(400).send({ message: 'No vanityurl found' });
     } else {
       getUserID(vanityurl).then(response => {
-        console.log(response)
         reply.status(200).send({ steamid: response.data.response.steamid })
       }).catch(error => {
         if (error.statusCode == 404) {

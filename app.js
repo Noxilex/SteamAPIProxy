@@ -36,6 +36,8 @@ module.exports = function (fastify, opts, next) {
   axios.defaults.baseURL = 'http://api.steampowered.com'
 
 
+  fastify.register(require('fastify-cors'))
+
   // Do not touch the following lines
 
   // This loads all plugins defined in plugins
