@@ -13,7 +13,7 @@ module.exports = function (fastify, opts, next) {
     properties: {
       PORT: {
         type: 'string',
-        default: 3000
+        default: 3001
       }
     }
   }
