@@ -72,7 +72,10 @@ function getGames(steamid) {
         url: '/IPlayerService/GetOwnedGames/v0001',
         params: {
             key: process.env.API_KEY,
-            steamid: steamid
+            steamid: steamid,
+            format: 'json',
+            include_appinfo: true,
+            include_played_free_games: true
         }
     }
 

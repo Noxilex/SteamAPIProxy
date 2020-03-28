@@ -68,6 +68,10 @@ const getUserAppsOpts = {
                             type: 'object',
                             properties: {
                                 appid: { type: 'number' },
+                                name: { type: 'string' },
+                                img_icon_url: { type: 'string' },
+                                img_logo_url: { type: 'string' },
+                                has_community_visible_stats: { type: 'boolean' },
                                 playtime_forever: { type: 'number' },
                                 playtime_windows_forever: { type: 'number' },
                                 playtime_mac_forever: { type: 'number' },
