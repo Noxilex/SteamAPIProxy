@@ -23,7 +23,33 @@ function getFriendList(steamid) {
         }
     }
 
-    return axios.request(config)
+    return axios.request(config).then(response => {
+        if (Object.keys(response.data).length === 0) {
+            throw new NetworkException("No data found", reponse)
+        } else {
+            return response;
+        }
+    }).catch(err => {
+        if (err.response.status == 401) {
+            throw new AccessRightException("Can't access friend list, check steam account permissions", err)
+        } else {
+            throw new NetworkException(err.message, err)
+        }
+    })
+}
+
+function NetworkException(message, requestError) {
+    this.message = message;
+    this.name = "Network Error";
+    this.status = 500;
+    this.requestError = requestError;
+}
+
+function AccessRightException(message, requestError) {
+    this.message = message || "No access right";
+    this.name = "AccessRightException";
+    this.status = 403;
+    this.requestError = requestError;
 }
 
 function getGameInfos(appid) {
@@ -79,7 +105,13 @@ function getGames(steamid) {
         }
     }
 
-    return axios.request(config);
+    return axios.request(config).then(response => {
+        if (Object.keys(response.data.response).length === 0) {
+            throw new NetworkException("No data found")
+        } else {
+            return response;
+        }
+    });
 }
 
 

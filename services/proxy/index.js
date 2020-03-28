@@ -18,7 +18,7 @@ module.exports = function (fastify, opts, next) {
         if (error.statusCode == 404) {
           helpers.NotFound(reply, error)
         } else {
-          reply.send(error)
+          helpers.ErrorResponse(reply, error)
         }
       })
     }
@@ -32,7 +32,7 @@ module.exports = function (fastify, opts, next) {
       getGames(steamid).then(response => {
         reply.send(response.data.response)
       }).catch(err => {
-        reply.send(err)
+        helpers.ErrorResponse(reply, err)
       })
     }
   })
@@ -46,7 +46,7 @@ module.exports = function (fastify, opts, next) {
       getGameInfos(appid).then(response => {
         reply.send(response.data)
       }).catch(err => {
-        reply.send(err)
+        helpers.ErrorResponse(reply, err)
       })
     }
   })
@@ -61,12 +61,10 @@ module.exports = function (fastify, opts, next) {
       getPlayerNames(steamids).then(response => {
         reply.send(response.data.response)
       }).catch(err => {
-        reply.send(err)
+        helpers.ErrorResponse(reply, err)
       })
     }
   })
-
-
 
   fastify.get('/getFriendList', getFriendListOpts, (request, reply) => {
     let steamid = request.query.steamid;
@@ -76,8 +74,7 @@ module.exports = function (fastify, opts, next) {
       getFriendList(steamid).then(response => {
         reply.send(response.data)
       }).catch(err => {
-        request.log.error(err)
-        reply.send(err)
+        helpers.ErrorResponse(reply, err)
       })
     }
   })
