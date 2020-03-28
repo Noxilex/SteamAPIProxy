@@ -25,7 +25,7 @@ module.exports = function (fastify, opts, next) {
     }
   })
 
-  fastify.get('/getUserGames', getFriendAppsOpts, (request, reply) => {
+  fastify.get('/getUserApps', getFriendAppsOpts, (request, reply) => {
     let steamid = request.query.steamid;
     if (!steamid) {
       reply.status(400).send({ message: 'No steamid found' });
