@@ -49,7 +49,7 @@ const getUserIDopts = {
         }
     }
 }
-const getFriendAppsOpts = {
+const getUserAppsOpts = {
     schema: {
         queryString: {
             type: 'object',
@@ -178,7 +178,7 @@ const getPlayerNamesOpts = {
 module.exports = {
     getFriendListOpts,
     getUserIDopts,
-    getFriendAppsOpts,
+    getUserAppsOpts,
     getGameInfosOpts,
     getPlayerNamesOpts
 }

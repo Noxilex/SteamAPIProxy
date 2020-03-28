@@ -1,7 +1,7 @@
 'use strict'
 
 const { getUserID, getFriendList, getGameInfos, getGames, getPlayerNames } = require('./steamRequest')
-const { getUserIDopts, getFriendListOpts, getGameInfosOpts, getFriendAppsOpts, getPlayerNamesOpts } = require('./steamSchema')
+const { getUserIDopts, getFriendListOpts, getGameInfosOpts, getUserAppsOpts, getPlayerNamesOpts } = require('./steamSchema')
 const helpers = require('../../helpers')
 
 module.exports = function (fastify, opts, next) {
@@ -25,7 +25,7 @@ module.exports = function (fastify, opts, next) {
     }
   })
 
-  fastify.get('/getUserApps', getFriendAppsOpts, (request, reply) => {
+  fastify.get('/getUserApps', getUserAppsOpts, (request, reply) => {
     let steamid = request.query.steamid;
     if (!steamid) {
       reply.status(400).send({ message: 'No steamid found' });
