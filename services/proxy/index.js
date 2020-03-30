@@ -14,11 +14,11 @@ module.exports = function (fastify, opts, next) {
     } else {
       getUserID(vanityurl).then(response => {
         reply.status(200).send({ steamid: response.data.response.steamid })
-      }).catch(error => {
-        if (error.statusCode == 404) {
-          helpers.NotFound(reply, error)
+      }).catch(err => {
+        if (err.statusCode == 404) {
+          helpers.NotFound(reply, err)
         } else {
-          helpers.ErrorResponse(reply, error)
+          helpers.ErrorResponse(reply, err)
         }
       })
     }
