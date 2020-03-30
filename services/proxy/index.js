@@ -15,11 +15,7 @@ module.exports = function (fastify, opts, next) {
       getUserID(vanityurl).then(response => {
         reply.status(200).send({ steamid: response.data.response.steamid })
       }).catch(error => {
-        if (error.statusCode == 404) {
-          helpers.NotFound(reply, error)
-        } else {
-          helpers.ErrorResponse(reply, error)
-        }
+        reply.status(error.statusCode).send(error)
       })
     }
   })
@@ -32,11 +28,10 @@ module.exports = function (fastify, opts, next) {
       getGames(steamid).then(response => {
         reply.send(response.data.response)
       }).catch(err => {
-        helpers.ErrorResponse(reply, err)
+        reply.send(err)
       })
     }
   })
-
 
   fastify.get('/getGameInfos', getGameInfosOpts, (request, reply) => {
     let appid = request.query.appid;
@@ -46,12 +41,10 @@ module.exports = function (fastify, opts, next) {
       getGameInfos(appid).then(response => {
         reply.send(response.data)
       }).catch(err => {
-        helpers.ErrorResponse(reply, err)
+        reply.send(err)
       })
     }
   })
-
-
 
   fastify.get('/getPlayerNames', getPlayerNamesOpts, (request, reply) => {
     let steamids = request.query.steamids;
@@ -61,7 +54,7 @@ module.exports = function (fastify, opts, next) {
       getPlayerNames(steamids).then(response => {
         reply.send(response.data.response)
       }).catch(err => {
-        helpers.ErrorResponse(reply, err)
+        reply.send(err)
       })
     }
   })
@@ -74,7 +67,7 @@ module.exports = function (fastify, opts, next) {
       getFriendList(steamid).then(response => {
         reply.send(response.data)
       }).catch(err => {
-        helpers.ErrorResponse(reply, err)
+        resply.send(err)
       })
     }
   })
