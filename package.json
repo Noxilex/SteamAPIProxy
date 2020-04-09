@@ -10,7 +10,7 @@
     "test": "tap test/**/*.test.js",
     "start": "fastify start -l info -p 3001 -a 0.0.0.0",
     "dev": "fastify start -w -l info -p 3001 -P app.js",
-    "start:forever": "forever start --id \"GamePicker\" -o out.log -e err.log -l forever.log -c \"npm start\" ./app.js"
+    "start:forever": "forever start --id \"GamePicker\" --append -o out.log -e err.log -l forever.log -c \"npm start\" ./app.js"
     
   },
   "keywords": [],
