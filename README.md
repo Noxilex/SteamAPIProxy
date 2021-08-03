@@ -1,0 +1,1 @@
+Don't forget to add API_KEY to env variables

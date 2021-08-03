@@ -3,9 +3,19 @@ function NotFound(reply, error) {
 }
 
 function ErrorResponse(reply, error) {
-    reply.status(error.status).send({
-        statusCode: error.status,
-        message: error.message
+    console.log(error)
+    let code = 500;
+    let message = "Unknown error";
+    if(error.response){
+        code = error.response.status;
+        message = error.response.statusText;
+    }else {
+        code = error.status;
+        message = error.message;
+    }
+    reply.status(code).send({
+        statusCode: code,
+        message: message
     });
 }
 
