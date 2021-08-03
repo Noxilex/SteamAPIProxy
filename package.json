@@ -11,13 +11,12 @@
     "start": "fastify start -l info -p 3001 -a 0.0.0.0",
     "dev": "fastify start -w -l info -p 3001 -P app.js",
     "start:forever": "forever start --id \"GamePicker\" --append -o out.log -e err.log -l forever.log -c \"npm start\" ./app.js"
-    
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "fastify": "^2.0.0",
     "fastify-autoload": "^1.0.0",
     "fastify-cli": "^1.5.0",
@@ -27,6 +26,6 @@
     "pino-colada": "^1.5.1"
   },
   "devDependencies": {
-    "tap": "^12.5.3"
+    "tap": "^15.0.9"
   }
 }
