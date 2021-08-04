@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "tap test/**/*.test.js",
-    "start": "fastify start -l info -a 0.0.0.0 -p $PORT app.js",
+    "start": "fastify start -l info -a 127.0.0.1 -p $PORT app.js",
     "dev": "fastify start -w -l info -p 3001",
     "start:forever": "forever start --id \"GamePicker\" --append -o out.log -e err.log -l forever.log -c \"npm start\" ./app.js"
   },
